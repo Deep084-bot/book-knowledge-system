@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Add Book</title>
+  <title>Edit Book</title>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
+
 <body>
 
-  <title>Edit Book</title>
-    <h2>Edit Book</h2>
+  <h2>Edit Book</h2>
 
-  <form id="bookForm">
-    <input type="text" placeholder="Book Title" name="title" required>
-    <input type="text" placeholder="Author" name="author" required>
-    
-    <input type="number" placeholder="Rating (1-5)" name="rating" min="1" max="5">
+  <form id="bookForm" action="/books/<%= book.id %>?_method=PUT" method="POST">
 
-    <input type="text" placeholder="Tags (comma separated)" name="tags">
-
-    <textarea placeholder="Your Notes..." name="notes"></textarea>
-
-    <button type="submit">Save</button>
+    <input type="text" name="title" value="<%= book.title %>" required>
+    <input type="text" name="author" value="<%= book.author %>" required>
+    <input type="number" name="rating" value="<%= book.rating %>" min="1" max="5">
+    <input type="text" name="tags" value="<%= book.tags.join(', ') %>">
+    <textarea name="notes"><%= book.notes %></textarea>
+    <button type="submit">Update</button>
   </form>
 
 </body>
+
 </html>
